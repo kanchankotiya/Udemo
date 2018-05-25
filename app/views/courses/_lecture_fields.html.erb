@@ -1,0 +1,27 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :topic_name %>
+    <br/>
+    <%= f.text_field :topic_name %>
+  </div>
+  <%= link_to_remove_association "remove lectures", f , class: "btn btn-danger pull-right"%>
+  <div id="videos">
+    <%= f.fields_for :videos do |video| %> 
+      <%= render 'video_fields', f: video %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "Add Videos", f, :videos, class: "btn btn-success"%>
+    </div>
+    <hr>
+  </div>
+  <div id="attachment">
+    <%= f.fields_for :attachments do |attach| %> 
+      <%= render 'attachment_fields', f: attach %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "Add Attachments", f, :attachments, class: "btn btn-info"%>
+    </div>
+    <hr>
+  </div>
+</div>
+
